@@ -7,3 +7,5 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+/iot-vehicles-viz/nbproject/private/
+/iot-vehicles-viz/build/
