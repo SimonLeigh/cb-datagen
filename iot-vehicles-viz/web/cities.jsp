@@ -1,4 +1,4 @@
-<%@page import="com.couchbase.demo.iot.vehicles.viz.TypeChart"%>
+<%@page import="com.couchbase.demo.iot.vehicles.viz.CityBarChart"%>
 
 <!DOCTYPE html>
 
@@ -27,12 +27,12 @@
                 
             function drawChart(){
                 
-                drawChart_type_chart();
+                drawChart_city_chart();
             }    
             
             //Mixed-in Java code
             <%
-                TypeChart chart = new TypeChart(out, "type_chart");
+                CityBarChart chart = new CityBarChart(out, "city_chart");
                 chart.drawChart();
             %>
 
@@ -53,7 +53,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div id="type_chart"></div>
+                        <div id="city_chart"></div>
                     </div>
                 </div>
             </div>     

@@ -3,7 +3,7 @@ package com.couchbase.demo.iot.vehicles.viz;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.demo.iot.vehicles.conn.BucketFactory;
-import com.couchbase.demo.iot.vehicles.spark.CountSamplesByType;
+import com.couchbase.demo.iot.vehicles.spark.QueryByCity;
 import java.io.IOException;
 import java.util.Set;
 import javax.servlet.jsp.JspWriter;
@@ -12,13 +12,13 @@ import javax.servlet.jsp.JspWriter;
  *
  * @author david
  */
-public class TypeChart implements Chart {
+public class CityBarChart implements Chart {
 
     /**
      * Chart input
      */
     private Bucket bucket = BucketFactory.getBucket();
-    private JsonDocument doc = bucket.get(CountSamplesByType.COUNT_TYPE_V_KEY);
+    private JsonDocument doc = bucket.get(QueryByCity.COUNT_TYPE_C_KEY);
 
     /**
      * The output stream to use
@@ -30,7 +30,7 @@ public class TypeChart implements Chart {
 
     
     
-    public TypeChart(JspWriter out, String id) {
+    public CityBarChart(JspWriter out, String id) {
         this.out = out;
         this.id = id;
     }
@@ -65,7 +65,7 @@ public class TypeChart implements Chart {
 
             out.println("function drawChart_" + id + "() {");
             out.println("var data = new google.visualization.DataTable();");
-            out.println("data.addColumn('string','Type');");
+            out.println("data.addColumn('string','City');");
             out.println("data.addColumn('number','Count');");
 
             String rows = "";
@@ -84,7 +84,7 @@ public class TypeChart implements Chart {
 
             out.println("data.addRows([" + rows + "]);");
             out.println("var options = {'title':'Types','width':400,'height':300};");
-            out.println("var chart = new google.visualization.PieChart(document.getElementById('"+ id  + "'));");
+            out.println("var chart = new google.visualization.BarChart(document.getElementById('"+ id  + "'));");
             out.println("chart.draw(data, options);");
             out.println("}");
 
