@@ -20,7 +20,7 @@ public class Vehicle {
     private final int speed;
     private final int fuelLevel;
     private final Route route;
-    private final City location;
+    private City location;
     private final long time;
 
     /**
@@ -83,7 +83,10 @@ public class Vehicle {
         return location;
     }
 
-   
+    public void setLocation(City location) {
+        this.location = location;
+    }
+    
 
     public int getSpeed() {
         return speed;
